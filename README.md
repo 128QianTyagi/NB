@@ -1,3 +1,5 @@
-# CS-128 : MP : Seam Carver
+# CS-128 : MP : Naive Bayes
 
-Prompt : https://docs.google.com/document/d/1cuvh5eY13wgwXMtX19YrOQbqUvn478-JA7BKgqkGQB4/
+This starter code is incomplete. Need to talk to Alan.
+
+Prompt: https://docs.google.com/document/d/1AD164OGrJwTxKQxWoNFM4o4c_d5MCQgOtmF89kBb8y8/
