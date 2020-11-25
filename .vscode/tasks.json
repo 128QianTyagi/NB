@@ -1,0 +1,59 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "Build Naive Bayes Tests",
+      "command": "/usr/bin/clang++-10",
+      "args": [
+        "-std=c++20",
+        "-stdlib=libc++",
+        "-lc++abi",
+        "-I./includes",
+        "./src/classifier.cc",
+        "./src/image.cc",
+        "./src/model.cc",
+        "./tests/tests.cc",
+        "-o",
+        "./bin/tests"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build"
+    },
+    {
+      "type": "shell",
+      "label": "Build Naive Bayes Driver",
+      "command": "/usr/bin/clang++-10",
+      "args": [
+        "-std=c++20",
+        "-stdlib=libc++",
+        "-lc++abi",
+        "-g",
+        "-O0",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-pedantic",
+        "-I./includes",
+        "./src/image.cc",
+        "./src/classifier.cc",
+        "./src/model.cc",
+        "./src/driver.cc",
+        "-o",
+        "./bin/driver"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": "build"
+    }
+  ]
+}
