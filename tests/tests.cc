@@ -18,12 +18,287 @@
 //////////////////////////////////////////////////////////////////////////////
 //                                 Includes                                 //
 //////////////////////////////////////////////////////////////////////////////
-#include "image.h"
-#include "classifier.h"
-#include "model.h"
+#include "../includes/classifier.h"
+#include "../includes/image.h"
+#include "../includes/model.h"
 
 //////////////////////////////////////////////////////////////////////////////
 //                                Test Cases                                //
 //////////////////////////////////////////////////////////////////////////////
+// Test Image ---------------------------------------- //
 
+TEST_CASE("Image pixels Test 1", "[constructed array]") {
+  NaiveBayes::Image image(" # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "                            "
+                     "############################"
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "++++++++++++++++++++++++++++");
+  REQUIRE(image.pixels[0][0] == 0);
+  REQUIRE(image.pixels[0][1] == 1);
+  REQUIRE(image.pixels[0][2] == 0);
+  REQUIRE(image.pixels[0][3] == 1);
+  REQUIRE(image.pixels[1][0] == 0);
+  REQUIRE(image.pixels[1][3] == 1);
+  REQUIRE(image.pixels[2][0] == 0);
+  REQUIRE(image.pixels[2][3] == 1);
+  REQUIRE(image.pixels[3][0] == 0);
+  REQUIRE(image.pixels[3][3] == 0);
+  REQUIRE(image.pixels[4][0] == 1);
+  REQUIRE(image.pixels[4][1] == 1);
+  REQUIRE(image.pixels[4][2] == 1);
+  REQUIRE(image.pixels[4][3] == 1);
+  REQUIRE(image.pixels[4][4] == 1);
+  REQUIRE(image.pixels[4][14] == 1);
+  REQUIRE(image.pixels[4][15] == 1);
+  REQUIRE(image.pixels[4][27] == 1);
+  REQUIRE(image.pixels[5][24] == 0);
+  REQUIRE(image.pixels[27][2] == 1);
+  REQUIRE(image.pixels[27][5] == 1);
+  REQUIRE(image.pixels[27][22] == 1);
+  REQUIRE(image.pixels[27][23] == 1);
+  REQUIRE(image.pixels[27][27] == 1);
+}
+
+TEST_CASE("Image pixels Test 2", "[constructed array]") {
+  NaiveBayes::Image image(" # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "                            "
+                     "############################"
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "++++++++++++++++++++++++++++");
+  REQUIRE(image.pixels[0][0] == 0);
+  REQUIRE(image.pixels[0][1] == 1);
+  REQUIRE(image.pixels[0][2] == 0);
+  REQUIRE(image.pixels[0][3] == 1);
+  REQUIRE(image.pixels[1][0] == 0);
+  REQUIRE(image.pixels[1][3] == 1);
+  REQUIRE(image.pixels[2][0] == 0);
+  REQUIRE(image.pixels[2][3] == 1);
+  REQUIRE(image.pixels[3][0] == 0);
+  REQUIRE(image.pixels[3][3] == 0);
+  REQUIRE(image.pixels[4][0] == 1);
+  REQUIRE(image.pixels[4][1] == 1);
+  REQUIRE(image.pixels[4][2] == 1);
+  REQUIRE(image.pixels[4][3] == 1);
+  REQUIRE(image.pixels[4][4] == 1);
+  REQUIRE(image.pixels[4][14] == 1);
+  REQUIRE(image.pixels[4][15] == 1);
+  REQUIRE(image.pixels[4][27] == 1);
+  REQUIRE(image.pixels[5][24] == 0);
+  REQUIRE(image.pixels[27][2] == 1);
+  REQUIRE(image.pixels[27][5] == 1);
+  REQUIRE(image.pixels[27][22] == 1);
+  REQUIRE(image.pixels[27][23] == 1);
+  REQUIRE(image.pixels[27][27] == 1);
+}
+
+TEST_CASE("Image pixels Test 3", "[constructed array]") {
+  NaiveBayes::Image image(" # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "                            "
+                     "############################"
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "++++++++++++++++++++++++++++");
+  REQUIRE(image.pixels[0][0] == 0);
+  REQUIRE(image.pixels[0][1] == 1);
+  REQUIRE(image.pixels[0][2] == 0);
+  REQUIRE(image.pixels[0][3] == 1);
+  REQUIRE(image.pixels[1][0] == 0);
+  REQUIRE(image.pixels[1][3] == 1);
+  REQUIRE(image.pixels[2][0] == 0);
+  REQUIRE(image.pixels[2][3] == 1);
+  REQUIRE(image.pixels[3][0] == 0);
+  REQUIRE(image.pixels[3][3] == 0);
+  REQUIRE(image.pixels[4][0] == 1);
+  REQUIRE(image.pixels[4][1] == 1);
+  REQUIRE(image.pixels[4][2] == 1);
+  REQUIRE(image.pixels[4][3] == 1);
+  REQUIRE(image.pixels[4][4] == 1);
+  REQUIRE(image.pixels[4][14] == 1);
+  REQUIRE(image.pixels[4][15] == 1);
+  REQUIRE(image.pixels[4][27] == 1);
+  REQUIRE(image.pixels[5][24] == 0);
+  REQUIRE(image.pixels[27][2] == 1);
+  REQUIRE(image.pixels[27][5] == 1);
+  REQUIRE(image.pixels[27][22] == 1);
+  REQUIRE(image.pixels[27][23] == 1);
+  REQUIRE(image.pixels[27][27] == 1);
+}
+
+TEST_CASE("Image pixels Test 4", "[constructed array]") {
+  NaiveBayes::Image image(" # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "                            "
+                     "############################"
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "++++++++++++++++++++++++++++");
+  REQUIRE(image.pixels[0][0] == 0);
+  REQUIRE(image.pixels[0][1] == 1);
+  REQUIRE(image.pixels[0][2] == 0);
+  REQUIRE(image.pixels[0][3] == 1);
+  REQUIRE(image.pixels[1][0] == 0);
+  REQUIRE(image.pixels[1][3] == 1);
+  REQUIRE(image.pixels[2][0] == 0);
+  REQUIRE(image.pixels[2][3] == 1);
+  REQUIRE(image.pixels[3][0] == 0);
+  REQUIRE(image.pixels[3][3] == 0);
+  REQUIRE(image.pixels[4][0] == 1);
+  REQUIRE(image.pixels[4][1] == 1);
+  REQUIRE(image.pixels[4][2] == 1);
+  REQUIRE(image.pixels[4][3] == 1);
+  REQUIRE(image.pixels[4][4] == 1);
+  REQUIRE(image.pixels[4][14] == 1);
+  REQUIRE(image.pixels[4][15] == 1);
+  REQUIRE(image.pixels[4][27] == 1);
+  REQUIRE(image.pixels[5][24] == 0);
+  REQUIRE(image.pixels[27][2] == 1);
+  REQUIRE(image.pixels[27][5] == 1);
+  REQUIRE(image.pixels[27][22] == 1);
+  REQUIRE(image.pixels[27][23] == 1);
+  REQUIRE(image.pixels[27][27] == 1);
+}
+
+TEST_CASE("Image pixels Test 5", "[constructed array]") {
+  NaiveBayes::Image image(" # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "                            "
+                     "############################"
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     " # + ++++++++++++++         "
+                     "++++++++++++++++++++++++++++");
+  REQUIRE(image.pixels[0][0] == 0);
+  REQUIRE(image.pixels[0][1] == 1);
+  REQUIRE(image.pixels[0][2] == 0);
+  REQUIRE(image.pixels[0][3] == 1);
+  REQUIRE(image.pixels[1][0] == 0);
+  REQUIRE(image.pixels[1][3] == 1);
+  REQUIRE(image.pixels[2][0] == 0);
+  REQUIRE(image.pixels[2][3] == 1);
+  REQUIRE(image.pixels[3][0] == 0);
+  REQUIRE(image.pixels[3][3] == 0);
+  REQUIRE(image.pixels[4][0] == 1);
+  REQUIRE(image.pixels[4][1] == 1);
+  REQUIRE(image.pixels[4][2] == 1);
+  REQUIRE(image.pixels[4][3] == 1);
+  REQUIRE(image.pixels[4][4] == 1);
+  REQUIRE(image.pixels[4][14] == 1);
+  REQUIRE(image.pixels[4][15] == 1);
+  REQUIRE(image.pixels[4][27] == 1);
+  REQUIRE(image.pixels[5][24] == 0);
+  REQUIRE(image.pixels[27][2] == 1);
+  REQUIRE(image.pixels[27][5] == 1);
+  REQUIRE(image.pixels[27][22] == 1);
+  REQUIRE(image.pixels[27][23] == 1);
+  REQUIRE(image.pixels[27][27] == 1);
+}
 //////////////////////////////////////////////////////////////////////////////
