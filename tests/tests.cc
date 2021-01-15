@@ -301,4 +301,13 @@ TEST_CASE("Image pixels Test 5", "[constructed array]") {
   REQUIRE(image.pixels[27][23] == 1);
   REQUIRE(image.pixels[27][27] == 1);
 }
+
+TEST_CASE("Model constructor", "[Image array created]") {
+  std::ifstream model_a("data/sampleimages");
+  std::ifstream labels("data/samplelabels");
+  std::istream & i = model_a;
+  std::istream & l = labels;
+  NaiveBayes::Model model = NaiveBayes::Model(l, i);
+  REQUIRE(model.ImageList().size() == 3);
+}
 //////////////////////////////////////////////////////////////////////////////

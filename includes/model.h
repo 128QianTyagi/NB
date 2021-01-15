@@ -37,6 +37,7 @@ const double kLaplaceConstant = 0.3;
  */
 
 class Model {
+  public:
   /**
    * Constructor for the Model class. Declares the array of images from
    * the training file and uses Probabilities() to create the
