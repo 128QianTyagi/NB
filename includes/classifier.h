@@ -2,7 +2,7 @@
 #define _CLASSIFIER_H_
 
 #include <istream>
-
+#include <cmath>
 #include "image.h"
 #include "model.h"
 
