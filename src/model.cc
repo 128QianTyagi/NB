@@ -34,18 +34,20 @@ namespace NaiveBayes {
     for (size_t i = 0; i < labels.length(); ++i) {
       map[labels[i] - '0']++;
     }
+
     for (auto i = map.begin(); i != map.end(); ++i) {
       priors[i->first] = ((double) i->second / (double) labels.length());
     }
 
     // Compute pixel probabilities
+    int counts[kImageSize][kImageSize][kNumClasses][kNumShades] = {0};
     for (size_t i = 0; i < image_list.size(); ++i) {
-      for (int j = 0; j < kImageSize; ++j) {
-        for (int k = 0; k < kImageSize; ++k) {
+      for (size_t j = 0; j < kImageSize; ++j) {
+        for (size_t k = 0; k < kImageSize; ++k) {
           if (image_list[i].pixels[j][k] == 1)
-            prob[j][k][labels[i] - '0'][kShadedIndex]++;
+            counts[j][k][(int) labels[i] - '0'][kShadedIndex]++;
           else 
-            prob[j][k][labels[i] - '0'][kUnshadedIndex]++;
+            counts[j][k][(int)labels[i] - '0'][kUnshadedIndex]++;
         }
       }
     }
@@ -54,7 +56,7 @@ namespace NaiveBayes {
       for (size_t j = 0; j < kImageSize; ++j) {
         for (size_t c = 0; c < kNumClasses; ++c) {
           for (size_t k = 0; k < kNumShades; ++k) {
-            prob[i][j][c][k] = (kLaplaceConstant + prob[i][j][c][k]) / (kNumClasses * kLaplaceConstant + map[c]);
+            prob[i][j][c][k] = ((double)(kLaplaceConstant + counts[i][j][c][k])) / ((double) (kNumClasses * kLaplaceConstant + map[c]));; 
           }
         }
       }
@@ -64,9 +66,8 @@ namespace NaiveBayes {
 
   std::ostream & operator<<(std::ostream & output, const Model & model) {
     for (size_t i = 0; i < kNumClasses; ++i) {
-      output << model.priors[i];
+      output << model.priors[i] << "\n";
     }
-    output << "\n";
 
     for (size_t i = 0; i < kImageSize; ++i) {
       for (int j = 0; j < kImageSize; j++) {
@@ -76,7 +77,7 @@ namespace NaiveBayes {
                         output << std::to_string(j) << " ";
                         output << std::to_string(k) << " ";
                         output << std::to_string(z) << " ";
-                        output << (model.prob[i][j][k][z]) << " "; 
+                        output << (model.prob[i][j][k][z]) << "\n"; 
                     }
                 }
             }
