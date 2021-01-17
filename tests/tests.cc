@@ -310,4 +310,20 @@ TEST_CASE("Model constructor", "[Image array created]") {
   NaiveBayes::Model model = NaiveBayes::Model(l, i);
   REQUIRE(model.ImageList().size() == 3);
 }
+
+TEST_CASE("Insertion operator", "[TrainedModel.txt written]") {
+  std::ifstream model_a("data/sampleimages");
+  std::ifstream labels("data/samplelabels");
+  std::istream &i = model_a;
+  std::istream &l = labels;
+  NaiveBayes::Model model(l, i);
+  std::ofstream out_stream("data/TrainedModelTest.txt");
+  std::ostream & out = out_stream;
+  out << model;
+  std::ifstream input("data/TrainedModelTest.txt");
+  std::istream & stream = input;
+  std::string line = "";
+  std::getline(stream, line);
+  REQUIRE(line.length() != 0);
+}
 //////////////////////////////////////////////////////////////////////////////
